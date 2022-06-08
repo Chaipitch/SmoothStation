@@ -16,7 +16,7 @@ function App() {
         <h1 className="text-3xl font-bold text-center cursor-default py-10 text-black-400">
           Smooth Station
         </h1>
-        <Song currentSong={currentSong} isPlaying={isPlaying}/>
+        <Song/>
         <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
         <Library/>
       </MusicAppProvider>

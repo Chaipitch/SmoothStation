@@ -3,7 +3,7 @@ import Cardsm from './shared/Cardsm'
 import {FaPlay} from 'react-icons/fa'
 import MusicAppContext from '../context/MusicAppContext'
 
-function SongItem({ song}) {
+function SongItem({song}) {
     const {setCurrentSong} = useContext(MusicAppContext)
 
     const songSelectHandler = () => {
