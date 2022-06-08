@@ -1,14 +1,25 @@
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import Cardsm from './shared/Cardsm'
 import {FaPlay} from 'react-icons/fa'
 import MusicAppContext from '../context/MusicAppContext'
 
 function SongItem({song}) {
-    const {setCurrentSong} = useContext(MusicAppContext)
+    const {setCurrentSong, isPlaying, audioRef} = useContext(MusicAppContext)
+    
 
     const songSelectHandler = () => {
         setCurrentSong(song)
+        if(isPlaying){
+            const playPromise = audioRef.current.play();
+            if(playPromise !== undefined){
+                playPromise.then((audio) => {
+                    audioRef.current.play(); 
+                })
+            }
+        }
     }
+
+    
 
 
   return (
@@ -20,6 +31,8 @@ function SongItem({song}) {
                 <h3 className=' px-4 text-sm'>{song.artist}</h3>
             </div>
             <button onClick={songSelectHandler} className='ml-auto mr-4 hover:cursor-pointer hover:text-red-400 hover:scale-[120%] transition'><FaPlay/></button>
+
+            
         </div>
     </Cardsm>
   )

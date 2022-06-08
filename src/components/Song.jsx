@@ -5,7 +5,6 @@ import MusicAppContext from '../context/MusicAppContext'
 function Song() {
   const {currentSong,isPlaying} = useContext(MusicAppContext)
 
-
   return (
     <Card>
         <div className=' flex flex-col items-center justify-center space-y-2 min-h-[50vh]'>
