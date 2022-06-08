@@ -1,15 +1,18 @@
-import React from 'react'
-import Card from './shared/Card'
+import {useContext} from 'react'
+import Cardsm from './shared/Cardsm'
 import {FaPlay} from 'react-icons/fa'
+import MusicAppContext from '../context/MusicAppContext'
 
-function SongItem({ song, setCurrentSong, id}) {
+function SongItem({ song}) {
+    const {setCurrentSong} = useContext(MusicAppContext)
+
     const songSelectHandler = () => {
         setCurrentSong(song)
     }
 
 
   return (
-    <Card>
+    <Cardsm>
         <div className='flex items-center'>
             <img className='w-1/5 shadow-sm px-4' src={song.cover} alt="#" />
             <div>
@@ -18,7 +21,7 @@ function SongItem({ song, setCurrentSong, id}) {
             </div>
             <button onClick={songSelectHandler} className='ml-auto mr-4 hover:cursor-pointer hover:text-red-400 hover:scale-[120%] transition'><FaPlay/></button>
         </div>
-    </Card>
+    </Cardsm>
   )
 }
 

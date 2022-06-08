@@ -1,5 +1,6 @@
-import React from 'react'
+import {useContext} from 'react'
 import Card from './shared/Card'
+import MusicAppContext from '../context/MusicAppContext'
 
 function Song({currentSong,isPlaying}) {
   return (
