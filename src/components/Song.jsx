@@ -1,7 +1,10 @@
-import React from 'react'
+import {useContext} from 'react'
 import Card from './shared/Card'
+import MusicAppContext from '../context/MusicAppContext'
 
-function Song({currentSong,isPlaying}) {
+function Song() {
+  const {currentSong,isPlaying} = useContext(MusicAppContext)
+
   return (
     <Card>
         <div className=' flex flex-col items-center justify-center space-y-2 min-h-[50vh]'>
