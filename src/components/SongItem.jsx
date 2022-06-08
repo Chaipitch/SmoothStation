@@ -4,19 +4,12 @@ import {FaPlay} from 'react-icons/fa'
 import MusicAppContext from '../context/MusicAppContext'
 
 function SongItem({song}) {
-    const {setCurrentSong, isPlaying, audioRef} = useContext(MusicAppContext)
+    const {setCurrentSong, isPlaying, audioRef,playAudio} = useContext(MusicAppContext)
     
 
     const songSelectHandler = () => {
         setCurrentSong(song)
-        if(isPlaying){
-            const playPromise = audioRef.current.play();
-            if(playPromise !== undefined){
-                playPromise.then((audio) => {
-                    audioRef.current.play(); 
-                })
-            }
-        }
+        playAudio()
     }
 
     

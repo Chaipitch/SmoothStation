@@ -72,6 +72,18 @@ export const MusicAppProvider = ({children}) => {
         }
     }
 
+    //Play When selected or skipped
+    const playAudio = () => {
+        if(isPlaying){
+            const playPromise = audioRef.current.play();
+            if(playPromise !== undefined){
+                playPromise.then((audio) => {
+                    audioRef.current.play(); 
+                })
+            }
+        }
+    }
+
     
     
 
@@ -96,8 +108,8 @@ export const MusicAppProvider = ({children}) => {
         volumeInfo,
         currentVol:volumeInfo.currentVol,
         volRange: volumeInfo.volRange,
-        skipTrackHandler
-
+        skipTrackHandler,
+        playAudio
     }}>
         {children}
     </MusicAppContext.Provider>

@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import {FaPlay, FaChevronLeft,FaChevronRight,FaPause,FaVolumeUp} from 'react-icons/fa'
 import Card from './shared/Card'
 import MusicAppContext from '../context/MusicAppContext'
@@ -18,8 +18,27 @@ function Player() {
         volHandler,
         currentVol,
         volRange,
-        skipTrackHandler
+        skipTrackHandler,
+        songs,
+        setSongs,
+        playAudio
     } = useContext(MusicAppContext)
+
+    useEffect(() => {
+        const newSongs = songs.map((song) => {
+            if(song.id === currentSong.id){
+                return {
+                    ...song, active: true
+                }
+            }else{
+                return{
+                    ...song, active: false
+                }
+            }
+        })
+        setSongs(newSongs)
+        playAudio()
+    },[currentSong])
 
   return (
     <Card>
