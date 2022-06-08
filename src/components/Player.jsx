@@ -1,7 +1,13 @@
-import {useState,useRef} from 'react'
+import {useState,useRef, useContext} from 'react'
 import {FaPlay, FaChevronLeft,FaChevronRight,FaPause} from 'react-icons/fa'
 import Card from './shared/Card'
-function Player({currentSong, isPlaying, setIsPlaying}) {
+import MusicAppContext from '../context/MusicAppContext'
+
+
+function Player() {
+    const {currentSong, isPlaying, setIsPlaying} = useContext(MusicAppContext)
+
+
     const [songInfo,setSongInfo] = useState({
         currentTime: null,
         duration: null,

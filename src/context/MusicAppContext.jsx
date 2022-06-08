@@ -12,7 +12,9 @@ export const MusicAppProvider = ({children}) => {
     return <MusicAppContext.Provider value={{
         songs,
         setCurrentSong,
-        currentSong
+        currentSong,
+        isPlaying,
+        setIsPlaying
     }}>
         {children}
     </MusicAppContext.Provider>

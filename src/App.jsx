@@ -6,9 +6,6 @@ import data from './util'
 import {MusicAppProvider} from './context/MusicAppContext'
 
 function App() { 
-  const [songs, setSongs] = useState(data());
-  const [isPlaying,setIsPlaying] = useState(false)
-  const [currentSong, setCurrentSong] = useState(songs[0])
 
   return (
     <>
@@ -17,7 +14,7 @@ function App() {
           Smooth Station
         </h1>
         <Song/>
-        <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying}/>
+        <Player/>
         <Library/>
       </MusicAppProvider>
     </>
