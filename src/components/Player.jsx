@@ -13,6 +13,7 @@ function Player() {
         duration: null,
     })
 
+
     const audioRef = useRef(null)
 
     const playSongHandler = () => {
@@ -44,6 +45,17 @@ function Player() {
         setSongInfo({...songInfo, currentTime: e.target.value})
         
     }
+
+    // Volume Ctrl
+    const [volumeInfo, setVolumeInfo] = useState({
+        currentVol: null,
+        volRange: null
+    })
+
+    const volHandler = (e) => {
+        audioRef.current.volume = e.target.value / 100;
+        setVolumeInfo({...volumeInfo, currentVol: e.target.value})
+    }
     
     
   return (
@@ -72,7 +84,9 @@ function Player() {
                 <p>VOL</p>
             <input 
                 type="range" 
-                min={0} max={100}
+                min={0} max={volumeInfo.volRange}
+                value={volumeInfo.currentVol ?? 0}
+                onChange={volHandler}
                 className ="range range-xs range-accent w-12 md:mr-14"/>
             </div>
             <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>

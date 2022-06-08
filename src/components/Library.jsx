@@ -10,9 +10,9 @@ function Library() {
     const {songs} = useContext(MusicAppContext)
 
   return (
-    <div>
+    <div className='mb-20 mt-16'>
         <h2 className='mx-10 font-bold text-3xl text-black py-6 border-t-2'>Library</h2>
-        <div className=' bg-gray-800 h-[512px] my-2 mx-20 rounded-3xl overflow-y-scroll' {...events} ref={ref}>
+        <div className=' bg-gray-800 h-[512px] my-2 mx-20 rounded-xl overflow-y-scroll shadow-xl' {...events} ref={ref}>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0'>
                 {songs.map(song => (
                     <SongItem  key={song.id} id={song.id} song={song}/>
