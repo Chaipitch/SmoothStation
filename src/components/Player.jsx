@@ -1,5 +1,5 @@
 import {useState,useRef, useContext} from 'react'
-import {FaPlay, FaChevronLeft,FaChevronRight,FaPause} from 'react-icons/fa'
+import {FaPlay, FaChevronLeft,FaChevronRight,FaPause,FaVolumeUp} from 'react-icons/fa'
 import Card from './shared/Card'
 import MusicAppContext from '../context/MusicAppContext'
 
@@ -80,14 +80,14 @@ function Player() {
                 </button>
                 <FaChevronRight className='hover:cursor-pointer hover:text-red-400 hover:scale-[120%] transition'/>
             </div>
-            <div className='absolute top-5 right-10 md:right-16 flex space-x-2 items-center justify-center'>
-                <p>VOL</p>
+            <div className='absolute top-6 right-1 md:right-20 flex space-x-2 items-center justify-center'>
+                <p><FaVolumeUp/></p>
             <input 
                 type="range" 
                 min={0} max={volumeInfo.volRange}
                 value={volumeInfo.currentVol ?? 0}
                 onChange={volHandler}
-                className ="range range-xs range-accent w-12 md:mr-14"/>
+                className ="range range-xs range-accent w-20 md:w-20 md:mr-14"/>
             </div>
             <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
         </div>
