@@ -21,7 +21,8 @@ function Player() {
         skipTrackHandler,
         songs,
         setSongs,
-        playAudio
+        playAudio,
+        songEndHandler
     } = useContext(MusicAppContext)
 
     useEffect(() => {
@@ -52,7 +53,7 @@ function Player() {
                 onChange={dragHandler} 
                 value={currentTime ?? 0} 
                 className ="range range-xs range-accent w-60 sm:w-80 md:w-96"/>
-                <p className='text-black hover:cursor-default'>{getTime(duration)}</p>
+                <p className='text-black hover:cursor-default'>{duration ? getTime(duration): '0:00'}</p>
             </div>
             {/* Player Control */}
             <div className='flex space-x-8' >
@@ -71,7 +72,7 @@ function Player() {
                 onChange={volHandler}
                 className ="range range-xs range-accent w-20 md:w-20 md:mr-14"/>
             </div>
-            <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
+            <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio} onEnded={songEndHandler}></audio>
         </div>
     </Card>
   )

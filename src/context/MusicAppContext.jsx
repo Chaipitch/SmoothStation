@@ -84,6 +84,12 @@ export const MusicAppProvider = ({children}) => {
         }
     }
 
+    const songEndHandler = async () => {
+        let currentIndex = songs.findIndex((song) => song.id === currentSong.id)
+          await setCurrentSong(songs[(currentIndex + 1) % songs.length])
+          if(isPlaying) audioRef.current.play()
+    }
+
     
     
 
@@ -109,7 +115,8 @@ export const MusicAppProvider = ({children}) => {
         currentVol:volumeInfo.currentVol,
         volRange: volumeInfo.volRange,
         skipTrackHandler,
-        playAudio
+        playAudio,
+        songEndHandler
     }}>
         {children}
     </MusicAppContext.Provider>
